@@ -1,12 +1,13 @@
-# Malaysia Cities
+# Visit Besut
 
-A lightweight static website showcasing 17 cities across Malaysia — from Kuala Lumpur and George Town to Kuching and Kota Kinabalu.
+A lightweight static website showcasing the best places to visit in Besut, Terengganu — the Perhentian Islands, Bukit Keluang beach, Lata Belatan waterfall, Kuala Besut and more.
 
 ## Features
 
-- Filter cities by region (Central, Northern, Southern, East Coast, Borneo)
-- Search by name, state, highlight or food
-- City detail pop-up with highlights and must-try dishes
+- Filter places by category (Islands, Beaches, Waterfalls & Nature, Towns & Food)
+- Search by name, area, highlight or activity
+- Detail pop-up with highlights and things to do
+- Travel tips (best season, jetty, monsoon)
 - Responsive layout with automatic dark mode
 
 ## Run locally
@@ -21,6 +22,6 @@ npx serve .
 
 Hosted on Vercel as a static site. Pushes to `main` deploy automatically.
 
-## Editing city data
+## Editing content
 
-All city content lives in the `CITIES` array in `script.js`.
+All place content lives in the `PLACES` array in `script.js`.

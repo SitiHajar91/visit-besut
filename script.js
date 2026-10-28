@@ -1,130 +1,80 @@
-const REGIONS = {
-  central: { label: "Central", gradient: "linear-gradient(135deg, #010066, #4b3fb5)" },
-  north: { label: "Northern", gradient: "linear-gradient(135deg, #0f766e, #34d399)" },
-  south: { label: "Southern", gradient: "linear-gradient(135deg, #b45309, #fbbf24)" },
-  east: { label: "East Coast", gradient: "linear-gradient(135deg, #0369a1, #38bdf8)" },
-  borneo: { label: "Borneo", gradient: "linear-gradient(135deg, #166534, #84cc16)" },
+const CATEGORIES = {
+  islands: { label: "Islands", gradient: "linear-gradient(135deg, #0369a1, #22d3ee)" },
+  beaches: { label: "Beaches", gradient: "linear-gradient(135deg, #b45309, #fcd34d)" },
+  nature: { label: "Waterfalls & Nature", gradient: "linear-gradient(135deg, #166534, #84cc16)" },
+  towns: { label: "Towns & Food", gradient: "linear-gradient(135deg, #9f1239, #fb7185)" },
 };
 
-const CITIES = [
+const PLACES = [
   {
-    name: "Kuala Lumpur", state: "Federal Territory", region: "central", emoji: "🏙️",
-    tagline: "The vibrant capital, where skyscrapers meet street food.",
-    desc: "Malaysia's capital and largest city grew from a 19th-century tin-mining settlement at the confluence of the Klang and Gombak rivers into a modern metropolis known for its skyline, shopping and multicultural food scene.",
-    highlights: ["Petronas Twin Towers", "Merdeka Square", "Bukit Bintang", "Jalan Alor night food street", "Batu Caves (just outside the city)"],
-    food: ["Nasi lemak", "Roti canai", "Bak kut teh", "Satay"],
+    name: "Perhentian Kecil", area: "Perhentian Islands", category: "islands", emoji: "🏝️",
+    tagline: "The smaller, livelier island with powdery beaches and backpacker charm.",
+    desc: "A short speedboat ride from Kuala Besut, Perhentian Kecil is famous for turquoise water, coral reefs close to shore and a relaxed, barefoot vibe.",
+    highlights: ["Long Beach (Pasir Panjang)", "Coral Bay sunsets", "Jungle trails between bays", "Romantic Beach"],
+    activities: ["Snorkelling", "Scuba diving", "Island hopping", "Beach cafés"],
   },
   {
-    name: "Putrajaya", state: "Federal Territory", region: "central", emoji: "🕌",
-    tagline: "The planned garden city and federal administrative centre.",
-    desc: "Developed from the 1990s as the seat of the federal government, Putrajaya is a planned city of grand boulevards, bridges and a large man-made lake.",
-    highlights: ["Putra Mosque", "Perdana Putra", "Putrajaya Lake cruise", "Seri Wawasan Bridge", "Iron Mosque (Masjid Tuanku Mizan)"],
-    food: ["Nasi kandar", "Ikan bakar", "Teh tarik"],
+    name: "Perhentian Besar", area: "Perhentian Islands", category: "islands", emoji: "🐢",
+    tagline: "The bigger, calmer island — great for families and turtle spotting.",
+    desc: "Perhentian Besar offers quieter beaches, family-friendly resorts and some of the best chances to swim alongside green turtles.",
+    highlights: ["Teluk Pauh", "Turtle Beach", "Three Coves Bay", "Shark Point snorkelling"],
+    activities: ["Swimming with turtles", "Kayaking", "Diving courses", "Sunset dinners"],
   },
   {
-    name: "Shah Alam", state: "Selangor", region: "central", emoji: "💙",
-    tagline: "Selangor's state capital, home of the iconic Blue Mosque.",
-    desc: "Shah Alam is Selangor's planned state capital, known for its lakes, parks and the striking Sultan Salahuddin Abdul Aziz Mosque.",
-    highlights: ["Sultan Salahuddin Abdul Aziz Mosque (Blue Mosque)", "i-City", "Shah Alam Lake Gardens", "Setia Alam night market"],
-    food: ["Nasi lemak", "Mee rebus", "Satay Kajang (nearby)"],
+    name: "Pulau Susu Dara", area: "Perhentian Marine Park", category: "islands", emoji: "🐠",
+    tagline: "Tiny islets with some of the clearest snorkelling water around.",
+    desc: "A popular stop on Perhentian island-hopping tours, Susu Dara's reefs are home to colourful fish, coral gardens and the occasional reef shark.",
+    highlights: ["Coral gardens", "Reef fish & clownfish", "Calm, clear water"],
+    activities: ["Snorkelling tours", "Underwater photography", "Diving"],
   },
   {
-    name: "George Town", state: "Penang", region: "north", emoji: "🎨",
-    tagline: "UNESCO heritage streets, street art and legendary hawker food.",
-    desc: "Founded in 1786, George Town's colonial architecture and shophouses earned UNESCO World Heritage status in 2008 together with Melaka. It is widely regarded as Malaysia's street-food capital.",
-    highlights: ["Armenian Street murals", "Penang Hill", "Kek Lok Si Temple", "Clan jetties", "Cheong Fatt Tze Mansion"],
-    food: ["Char kway teow", "Penang asam laksa", "Cendol", "Nasi kandar"],
+    name: "Pantai Bukit Keluang", area: "Near Kuala Besut", category: "beaches", emoji: "🌊",
+    tagline: "A dramatic headland beach with sea caves and hilltop views.",
+    desc: "One of Besut's best-loved mainland spots, Bukit Keluang combines a wide sandy beach with a rocky headland, sea caves and a recreational park.",
+    highlights: ["Sea caves at low tide", "Hilltop viewpoint", "Recreational park & picnic areas", "Sunrise over the South China Sea"],
+    activities: ["Beach picnics", "Cave exploring", "Photography", "Hiking"],
   },
   {
-    name: "Ipoh", state: "Perak", region: "north", emoji: "☕",
-    tagline: "Tin-mining heritage, limestone caves and white coffee.",
-    desc: "Ipoh prospered during the tin-mining boom. Today it is loved for its old town, cave temples set into limestone hills and its relaxed café culture.",
-    highlights: ["Ipoh Old Town & Concubine Lane", "Kek Lok Tong cave temple", "Kellie's Castle", "Gunung Lang Recreational Park"],
-    food: ["Ipoh white coffee", "Bean sprout chicken", "Hor fun", "Salted chicken"],
+    name: "Pantai Air Tawar", area: "Kampung Air Tawar", category: "beaches", emoji: "🏖️",
+    tagline: "A long, quiet stretch of casuarina-lined beach.",
+    desc: "A peaceful village beach where local families come to relax, fly kites and enjoy fresh seafood by the sea.",
+    highlights: ["Casuarina trees & shade", "Calm evening walks", "Local seafood stalls"],
+    activities: ["Kite flying", "Beach walks", "Family picnics"],
   },
   {
-    name: "Alor Setar", state: "Kedah", region: "north", emoji: "🌾",
-    tagline: "Royal capital of Malaysia's rice bowl.",
-    desc: "The capital of Kedah sits amid vast paddy fields. It has a rich royal history and is the gateway to the island of Langkawi.",
-    highlights: ["Zahir Mosque", "Alor Setar Tower", "Paddy Museum", "Balai Besar"],
-    food: ["Laksa Kedah", "Nasi ulam", "Mee abu"],
+    name: "Lata Belatan", area: "Near Jerteh", category: "nature", emoji: "💧",
+    tagline: "Cool cascading waterfall pools in the forest.",
+    desc: "A favourite weekend escape for locals, Lata Belatan's tiered waterfalls and natural pools are perfect for a refreshing dip.",
+    highlights: ["Tiered waterfalls", "Natural rock pools", "Forest picnic spots"],
+    activities: ["Swimming", "Picnicking", "Nature walks"],
   },
   {
-    name: "Kangar", state: "Perlis", region: "north", emoji: "⛰️",
-    tagline: "Quiet capital of Malaysia's smallest state.",
-    desc: "Kangar is the capital of Perlis, a small state of limestone hills and rice fields bordering Thailand.",
-    highlights: ["Perlis State Park", "Gua Kelam cave", "Padang Besar border market"],
-    food: ["Harumanis mango", "Laksa Perlis"],
+    name: "Lata Tembakah", area: "Hulu Besut", category: "nature", emoji: "🌿",
+    tagline: "A wide, multi-level waterfall surrounded by rainforest.",
+    desc: "Further inland, Lata Tembakah is known for its broad cascades flowing over smooth rock terraces — a beautiful spot for families.",
+    highlights: ["Multi-tier cascades", "Rainforest setting", "Shallow pools for kids"],
+    activities: ["Swimming", "Camping", "Jungle trekking"],
   },
   {
-    name: "Malacca City", state: "Melaka", region: "south", emoji: "🏰",
-    tagline: "Historic trading port with Portuguese, Dutch and British layers.",
-    desc: "Once one of the great trading ports of Southeast Asia, Melaka's historic centre is a UNESCO World Heritage Site with landmarks from the Malacca Sultanate and colonial eras.",
-    highlights: ["A Famosa", "Christ Church & Dutch Square", "Jonker Street night market", "Melaka River cruise", "St. Paul's Hill"],
-    food: ["Chicken rice balls", "Nyonya laksa", "Cendol gula Melaka", "Satay celup"],
+    name: "Kuala Besut", area: "Coastal town", category: "towns", emoji: "⚓",
+    tagline: "The bustling fishing town and gateway to the Perhentians.",
+    desc: "Most island visitors pass through Kuala Besut's jetty, but it's worth lingering for the fishing boats, the riverside and freshly made keropok lekor.",
+    highlights: ["Kuala Besut jetty", "Colourful fishing boats", "Riverside sunsets", "Keropok lekor makers"],
+    activities: ["Seafood dining", "Keropok shopping", "Boat watching"],
   },
   {
-    name: "Johor Bahru", state: "Johor", region: "south", emoji: "🌉",
-    tagline: "The southern gateway, just across the causeway from Singapore.",
-    desc: "Malaysia's southernmost major city is a fast-growing hub for trade, shopping and family attractions in the Iskandar region.",
-    highlights: ["Sultan Abu Bakar State Mosque", "Istana Besar", "LEGOLAND Malaysia (Iskandar Puteri)", "Johor Bahru Old Chinese Temple"],
-    food: ["Laksa Johor", "Mee rebus", "Otak-otak"],
+    name: "Jerteh", area: "Town centre", category: "towns", emoji: "🛍️",
+    tagline: "Besut's busiest town, full of markets and Terengganu flavours.",
+    desc: "Jerteh is the commercial heart of Besut — the best place to stock up, try local breakfast favourites and browse the morning markets.",
+    highlights: ["Pasar Jerteh (morning market)", "Local breakfast stalls", "Batik & songket shops"],
+    activities: ["Nasi dagang breakfast", "Market browsing", "Souvenir shopping"],
   },
   {
-    name: "Seremban", state: "Negeri Sembilan", region: "south", emoji: "🏛️",
-    tagline: "Minangkabau heritage and famous siew pau.",
-    desc: "The capital of Negeri Sembilan reflects the state's Minangkabau roots, seen in the distinctive upswept roofs of its traditional buildings.",
-    highlights: ["Negeri Sembilan State Museum", "Seremban Lake Gardens", "Port Dickson beaches (nearby)"],
-    food: ["Seremban siew pau", "Masak lemak cili api", "Beef noodles"],
-  },
-  {
-    name: "Kuantan", state: "Pahang", region: "east", emoji: "🏖️",
-    tagline: "Beaches and rainforest on the east coast.",
-    desc: "Pahang's capital is a laid-back coastal city with sandy beaches and easy access to rainforest, waterfalls and old mining towns.",
-    highlights: ["Teluk Cempedak beach", "Sultan Ahmad Shah State Mosque", "Sungai Lembing", "Gua Charas"],
-    food: ["Ikan patin tempoyak", "Keropok lekor", "Satar"],
-  },
-  {
-    name: "Kuala Terengganu", state: "Terengganu", region: "east", emoji: "🛶",
-    tagline: "Crystal Mosque, Malay crafts and island gateways.",
-    desc: "A coastal capital known for traditional Malay crafts such as batik and songket, and as a gateway to islands like Redang and the Perhentians.",
-    highlights: ["Crystal Mosque", "Kampung Cina (Chinatown)", "Pasar Payang", "Islamic Civilisation Park"],
-    food: ["Nasi dagang", "Keropok lekor", "Laksam"],
-  },
-  {
-    name: "Kota Bharu", state: "Kelantan", region: "east", emoji: "🪁",
-    tagline: "Heartland of Malay culture, crafts and colourful markets.",
-    desc: "Kota Bharu is a centre of traditional Malay arts — from kite-making (wau) to shadow puppetry — and home to one of the country's liveliest markets.",
-    highlights: ["Siti Khadijah Market", "Istana Jahar", "Kelantan Royal Museum", "Wau kite makers"],
-    food: ["Nasi kerabu", "Ayam percik", "Solok lada"],
-  },
-  {
-    name: "Kuching", state: "Sarawak", region: "borneo", emoji: "🐱",
-    tagline: "The 'Cat City' on the Sarawak River.",
-    desc: "Sarawak's capital charms visitors with its riverfront, colonial buildings and access to national parks full of proboscis monkeys and orangutans.",
-    highlights: ["Kuching Waterfront", "Sarawak Cultural Village", "Bako National Park", "Semenggoh Wildlife Centre", "Fort Margherita"],
-    food: ["Sarawak laksa", "Kolo mee", "Kek lapis Sarawak"],
-  },
-  {
-    name: "Miri", state: "Sarawak", region: "borneo", emoji: "🛢️",
-    tagline: "Oil town and gateway to Borneo's great caves.",
-    desc: "Malaysia's first oil well was drilled at Miri in 1910. Today the city is the jumping-off point for Niah and Gunung Mulu national parks.",
-    highlights: ["Canada Hill & the Grand Old Lady", "Gunung Mulu National Park", "Niah National Park", "Coral reefs offshore"],
-    food: ["Kampua mee", "Mee kolok", "Umai"],
-  },
-  {
-    name: "Kota Kinabalu", state: "Sabah", region: "borneo", emoji: "🏔️",
-    tagline: "Island-hopping, sunsets and Mount Kinabalu.",
-    desc: "Sabah's capital is a lively coastal city with offshore islands just minutes away and Mount Kinabalu, Malaysia's highest peak, a short drive inland.",
-    highlights: ["Tunku Abdul Rahman Park", "Gaya Street Sunday market", "Kinabalu Park (UNESCO)", "Signal Hill Observatory"],
-    food: ["Hinava", "Tuaran mee", "Sabah seafood"],
-  },
-  {
-    name: "Sandakan", state: "Sabah", region: "borneo", emoji: "🦧",
-    tagline: "Orangutans, sun bears and the Kinabatangan River.",
-    desc: "A historic port on Sabah's east coast and the main base for wildlife encounters in the lowland rainforests of Borneo.",
-    highlights: ["Sepilok Orangutan Rehabilitation Centre", "Bornean Sun Bear Conservation Centre", "Kinabatangan River cruise", "Agnes Keith House"],
-    food: ["Fresh seafood", "Sandakan dim sum"],
+    name: "Kampung Raja", area: "Historic town", category: "towns", emoji: "🏛️",
+    tagline: "Besut's historic royal town by the Besut River.",
+    desc: "Once the seat of Besut's local rulers, Kampung Raja is a laid-back riverside town with traditional Malay character and good local food.",
+    highlights: ["Besut River views", "Traditional town centre", "Local night markets"],
+    activities: ["Heritage walks", "Night market food", "Riverside strolls"],
   },
 ];
 
@@ -136,65 +86,65 @@ const count = $("#count");
 const empty = $("#empty");
 const modal = $("#modal");
 
-let activeRegion = "all";
+let activeCategory = "all";
 
 function renderFilters() {
-  const options = [["all", "All regions"], ...Object.entries(REGIONS).map(([k, v]) => [k, v.label])];
+  const options = [["all", "All places"], ...Object.entries(CATEGORIES).map(([k, v]) => [k, v.label])];
   filters.innerHTML = "";
   for (const [key, label] of options) {
     const btn = document.createElement("button");
     btn.className = "chip";
     btn.textContent = label;
-    btn.setAttribute("aria-pressed", String(key === activeRegion));
+    btn.setAttribute("aria-pressed", String(key === activeCategory));
     btn.addEventListener("click", () => {
-      activeRegion = key;
+      activeCategory = key;
       renderFilters();
-      renderCities();
+      renderPlaces();
     });
     filters.appendChild(btn);
   }
 }
 
-function matches(city, q) {
+function matches(place, q) {
   if (!q) return true;
-  const haystack = [city.name, city.state, city.tagline, ...city.highlights, ...city.food].join(" ").toLowerCase();
+  const haystack = [place.name, place.area, place.tagline, ...place.highlights, ...place.activities].join(" ").toLowerCase();
   return haystack.includes(q);
 }
 
-function renderCities() {
+function renderPlaces() {
   const q = search.value.trim().toLowerCase();
-  const list = CITIES.filter((c) => (activeRegion === "all" || c.region === activeRegion) && matches(c, q));
+  const list = PLACES.filter((p) => (activeCategory === "all" || p.category === activeCategory) && matches(p, q));
 
   grid.innerHTML = "";
-  for (const city of list) {
+  for (const place of list) {
     const card = document.createElement("button");
     card.className = "card";
     card.innerHTML = `
-      <div class="card-banner" style="background:${REGIONS[city.region].gradient}">
-        <span class="badge">${REGIONS[city.region].label}</span>
-        <span aria-hidden="true">${city.emoji}</span>
+      <div class="card-banner" style="background:${CATEGORIES[place.category].gradient}">
+        <span class="badge">${CATEGORIES[place.category].label}</span>
+        <span aria-hidden="true">${place.emoji}</span>
       </div>
       <div class="card-body">
-        <h3>${city.name}</h3>
-        <p class="card-state">${city.state}</p>
-        <p class="card-tagline">${city.tagline}</p>
+        <h3>${place.name}</h3>
+        <p class="card-state">${place.area}</p>
+        <p class="card-tagline">${place.tagline}</p>
       </div>`;
-    card.addEventListener("click", () => openCity(city));
+    card.addEventListener("click", () => openPlace(place));
     grid.appendChild(card);
   }
 
-  count.textContent = `Showing ${list.length} of ${CITIES.length} cities`;
+  count.textContent = `Showing ${list.length} of ${PLACES.length} places`;
   empty.hidden = list.length > 0;
 }
 
-function openCity(city) {
-  $("#modal-banner").style.background = REGIONS[city.region].gradient;
-  $("#modal-emoji").textContent = city.emoji;
-  $("#modal-state").textContent = `${city.state} · ${REGIONS[city.region].label}`;
-  $("#modal-title").textContent = city.name;
-  $("#modal-desc").textContent = city.desc;
-  $("#modal-highlights").innerHTML = city.highlights.map((h) => `<li>${h}</li>`).join("");
-  $("#modal-food").innerHTML = city.food.map((f) => `<span class="tag">${f}</span>`).join("");
+function openPlace(place) {
+  $("#modal-banner").style.background = CATEGORIES[place.category].gradient;
+  $("#modal-emoji").textContent = place.emoji;
+  $("#modal-area").textContent = `${place.area} · ${CATEGORIES[place.category].label}`;
+  $("#modal-title").textContent = place.name;
+  $("#modal-desc").textContent = place.desc;
+  $("#modal-highlights").innerHTML = place.highlights.map((h) => `<li>${h}</li>`).join("");
+  $("#modal-activities").innerHTML = place.activities.map((a) => `<span class="tag">${a}</span>`).join("");
   modal.showModal();
 }
 
@@ -202,8 +152,8 @@ $("#modal-close").addEventListener("click", () => modal.close());
 modal.addEventListener("click", (e) => {
   if (e.target === modal) modal.close();
 });
-search.addEventListener("input", renderCities);
+search.addEventListener("input", renderPlaces);
 $("#year").textContent = new Date().getFullYear();
 
 renderFilters();
-renderCities();
+renderPlaces();
