@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Malaysia Cities</title>
+  <meta name="description" content="Explore the cities of Malaysia — from Kuala Lumpur's skyline to the heritage streets of George Town and the rainforest gateways of Borneo." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌺</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <a href="#" class="brand">🌺 Malaysia Cities</a>
+      <div class="nav-links">
+        <a href="#cities">Cities</a>
+        <a href="#facts">Quick facts</a>
+      </div>
+    </nav>
+    <div class="hero-content">
+      <p class="eyebrow">Selamat datang</p>
+      <h1>Discover the cities of <span>Malaysia</span></h1>
+      <p class="lede">From the glittering towers of Kuala Lumpur to the heritage shophouses of George Town and the rainforest gateways of Borneo — explore what makes each city special.</p>
+      <a href="#cities" class="cta">Explore cities ↓</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="cities" class="section">
+      <div class="section-head">
+        <h2>Cities to explore</h2>
+        <p class="muted">Filter by region or search by name, state or highlight. Tap a card for details.</p>
+      </div>
+
+      <div class="controls">
+        <input id="search" type="search" placeholder="Search e.g. Penang, mosque, laksa…" aria-label="Search cities" />
+        <div id="filters" class="chips" role="group" aria-label="Filter by region"></div>
+      </div>
+
+      <p id="count" class="muted count"></p>
+      <div id="grid" class="grid"></div>
+      <p id="empty" class="empty" hidden>No cities match your search.</p>
+    </section>
+
+    <section id="facts" class="section facts">
+      <h2>Malaysia at a glance</h2>
+      <div class="fact-grid">
+        <div class="fact"><strong>13</strong><span>States</span></div>
+        <div class="fact"><strong>3</strong><span>Federal territories</span></div>
+        <div class="fact"><strong>Kuala Lumpur</strong><span>Capital city</span></div>
+        <div class="fact"><strong>Putrajaya</strong><span>Administrative centre</span></div>
+        <div class="fact"><strong>Ringgit (MYR)</strong><span>Currency</span></div>
+        <div class="fact"><strong>Bahasa Melayu</strong><span>National language</span></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Made with ❤️ for Malaysia · <span id="year"></span></p>
+  </footer>
+
+  <dialog id="modal" aria-labelledby="modal-title">
+    <div class="modal-banner" id="modal-banner">
+      <button class="close" id="modal-close" aria-label="Close">✕</button>
+      <span class="modal-emoji" id="modal-emoji"></span>
+    </div>
+    <div class="modal-body">
+      <p class="eyebrow" id="modal-state"></p>
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+      <h4>Highlights</h4>
+      <ul id="modal-highlights"></ul>
+      <h4>Must-try food</h4>
+      <div id="modal-food" class="tags"></div>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
